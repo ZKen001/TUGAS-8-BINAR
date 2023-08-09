@@ -1,0 +1,221 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "1.0",
+        "title": "Challenge 8",
+        "description": "SWAGGER REST API"
+    },
+    "host": "localhost:4000",
+    "basePath": "/api/v1",
+    "tags": [
+        {
+            "name": "player",
+            "description": "Everything about Player"
+        }
+    ],
+    "schemes": [
+        "http"
+    ],
+    "paths": {
+        "/players": {
+            "get": {
+                "tags": [
+                    "player"
+                ],
+                "summary": "Get Players",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            },
+            "post": {
+                "summary": "Create Player",
+                "tags": [
+                    "player"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Player object that needs to be added",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "username": {
+                                    "type": "string",
+                                    "example": "John Doe"
+                                },
+                                "password": {
+                                    "type": "string",
+                                    "example": "very secret"
+                                },
+                                "email": {
+                                    "type": "string",
+                                    "example": "john_doe@mail.com"
+                                },
+                                "experience": {
+                                    "type": "integer",
+                                    "example": 0
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "success"
+                    },
+                    "400": {
+                        "description": "bad request"
+                    },
+                    "503": {
+                        "description": "internal server error"
+                    }
+                }
+            }
+        },
+        "/players/{id}": {
+            "get": {
+                "tags": [
+                    "player"
+                ],
+                "summary": "Get Player byID",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "player"
+                ],
+                "summary": "Update Player",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Player object that needs to be updated",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "username": {
+                                    "type": "string",
+                                    "example": "John Doe"
+                                },
+                                "password": {
+                                    "type": "string",
+                                    "example": "very secret"
+                                },
+                                "email": {
+                                    "type": "string",
+                                    "example": "john_doe@mail.com"
+                                },
+                                "experience": {
+                                    "type": "integer",
+                                    "example": 999
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "500": {
+                        "description": "failed"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "player"
+                ],
+                "summary": "Delete Player byID",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "400": {
+                        "description": " Player Not found"
+                    }
+                }
+            }
+        },
+        "/players/exp/{id}": {
+            "post": {
+                "tags": [
+                    "player"
+                ],
+                "summary": "Update Player",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Player Experience that needs to be updated",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "exp": {
+                                    "type": "integer",
+                                    "example": 999
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    }
+                }
+            }
+        }
+    }
+}
